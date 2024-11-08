@@ -1,0 +1,30 @@
+In a Spring Boot application, "deployment using embedded servers" means that the application comes with a built-in web server
+(like Tomcat, Jetty, or Undertow).
+This server is packaged inside the application's JAR file, so you don't need to install or configure an external server separately.
+
+When you start the Spring Boot application, it automatically starts the embedded server, allowing the app to run as a standalone service.
+This makes deployment simpler because you only need to run the application JAR, and it’s ready to handle web requests without
+needing any extra setup on a server.
+
+To Deploy :
+1. Install Java
+2. Run JAR File
+
+Right click on your project -> Run As > Maven build...
+Goals : clean install
+
+Open Console Logs : Copy the path of jar in Building jar.
+And also check spring-boot-starter-tomcat (Default) is coming from spring-boot-starter-web
+
+Embedded Servers Examples :
+spring-boot-starter-tomcat
+spring-boot-starter-jetty
+spring-boot-starter-undertow
+
+cmd ->
+cd PATH
+dir
+java --version (Need at-least java 17)
+java -jar JAR_NAME
+
+
