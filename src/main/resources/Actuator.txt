@@ -1,0 +1,90 @@
+Spring Boot Actuator provides several useful endpoints for monitoring and managing applications in real-life production.
+Here are some of the key Actuator endpoints that can be valuable in a production environment:
+
+1. /actuator/health
+Purpose: Provides the health status of the application.
+Usage: Shows whether the application is up or down and, when configured, provides insights into the health of various components
+(like database connections, caches, etc.).
+It's often used by monitoring tools to check if the app is healthy.
+Example Output: { "status": "UP" }
+
+2. /actuator/info
+Purpose: Displays general application information.
+Usage: Commonly used to show basic application metadata, such as version, environment, and any custom information that developers choose to add.
+This is useful for tracking version releases in production.
+Example Output: { "version": "1.0.0", "description": "My Application" }
+
+3. /actuator/metrics
+Purpose: Provides various application metrics.
+Usage: Offers detailed performance metrics (like memory usage, CPU usage, active threads, etc.).
+This data is invaluable for performance monitoring and diagnostics.
+Example Output: { "names": ["jvm.memory.used", "jvm.threads.live", "system.cpu.usage"] }
+Example Specific Metric: /actuator/metrics/jvm.memory.used
+
+4. /actuator/loggers
+Purpose: Allows for viewing and modifying logging levels.
+Usage: Shows the current logging levels for all loggers, and you can dynamically change the level for specific packages or
+classes in real-time without restarting the application.
+Example to Change Logging Level: POST /actuator/loggers/com.example with { "configuredLevel": "DEBUG" }
+
+5. /actuator/env
+Purpose: Exposes the environment properties of the application.
+Usage: Helpful for viewing environment details, including configuration properties from application.properties, system properties,
+and environment variables. Can be used to troubleshoot configuration issues.
+Example Output: { "propertySources": [ { "name": "applicationConfig: [classpath:/application.properties]", "properties": { ... } } ] }
+
+6. /actuator/beans
+Purpose: Shows all Spring beans in the application context.
+Usage: Useful for debugging by providing insight into the beans that are currently loaded, their dependencies, and their scopes.
+Example Output: { "contexts": { "application": { "beans": { "dataSource": { "type": "org.apache.tomcat.jdbc.pool.DataSource", "scope": "singleton" } } } }
+
+7. /actuator/mappings
+Purpose: Lists all endpoint mappings in the application.
+Usage: Useful for debugging routing issues by providing details about all available endpoints and the controllers responsible for them.
+Example Output: { "/api/v1/users": { "handler": "UserController.getAllUsers" } }
+
+8. /actuator/threaddump (or /actuator/threaddump for JVM monitoring)
+Purpose: Provides a thread dump of the JVM.
+Usage: Helpful for diagnosing thread-related issues by providing details about active threads and their states,
+especially useful during high CPU or deadlock scenarios.
+Example Output: Contains detailed thread information, such as state, stack trace, etc.
+
+9. /actuator/heapdump
+Purpose: Generates a heap dump of the application.
+Usage: Useful for deep memory analysis. This endpoint provides a snapshot of the heap, which can be used with tools like
+Eclipse MAT to analyze memory usage and troubleshoot memory leaks.
+Output: Generates a .hprof file for memory analysis.
+
+10. /actuator/shutdown (disabled by default for security)
+Purpose: Allows graceful shutdown of the application.
+Usage: Useful for scenarios where you need to stop the application safely without external tools.
+Note that this endpoint should be carefully protected or disabled in production, as it can shut down the application remotely.
+
+Security Considerations
+In production, it's essential to protect these endpoints with proper security, such as authentication and authorization.
+Only expose necessary endpoints publicly, while others should be restricted or accessible only via internal networks.
+Using these endpoints effectively can help monitor, manage, and troubleshoot Spring Boot applications in production with minimal configuration.
+
+
+# To enable the /actuator/shutdown endpoint in a Spring Boot application, follow these steps:
+
+Update application.properties
+
+By default, the shutdown endpoint is disabled for security reasons.
+You can enable it by adding the following line to your application.properties file:
+management.endpoint.shutdown.enabled=true
+
+Ensure Proper Security Configuration:
+
+Since the /actuator/shutdown endpoint can remotely stop the application, it’s crucial to secure it.
+This might involve adding authentication and authorization to prevent unauthorized access.
+For example, if using Spring Security, make sure access is restricted, perhaps to admin users only.
+Access the Endpoint:
+
+After enabling, you can access the shutdown endpoint via a POST request:
+
+POST http://localhost:8080/actuator/shutdown
+This request will gracefully shut down the application.
+
+Note: Be careful using this in production.
+You may want to restrict access to this endpoint to only trusted IPs or keep it disabled unless absolutely necessary.
