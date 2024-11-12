@@ -33,3 +33,13 @@ The project is structured into several stages, demonstrating different approache
 2. JPA with Hibernate: Using the JPA standard with Hibernate as the implementation to simplify data interaction with Course entities.
 3. Spring Data JPA: Utilizing Spring Data JPA's repository abstractions to handle data persistence with minimal code.
 
+# EXTRA'S
+
+In a Spring Boot project using an H2 database, the default schema and data files are typically named as follows:
+
+1. Schema File: schema.sql – This file contains the SQL statements to define the structure of your database (e.g., creating tables).
+2. Data File: data.sql – This file contains the SQL statements to populate your database with initial data.
+
+## How to Use schema.sql and data.sql in Spring Boot
+Place schema.sql and data.sql in the src/main/resources directory.
+Spring Boot will automatically detect and execute schema.sql to set up the database schema and data.sql to populate it when the application starts, provided spring.datasource.initialization-mode is set to always or embedded (the default for embedded databases like H2).
