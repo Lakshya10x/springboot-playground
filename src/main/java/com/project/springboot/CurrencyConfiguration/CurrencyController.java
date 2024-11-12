@@ -1,4 +1,4 @@
-package com.project.springboot;
+package com.project.springboot.CurrencyConfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
