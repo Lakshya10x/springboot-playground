@@ -6,6 +6,7 @@ public class Course {
     private String courseName;
     private String platform;
 
+
     public Course(int id, String courseName, String platform) {
         this.id = id;
         this.courseName = courseName;
