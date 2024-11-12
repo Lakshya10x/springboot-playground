@@ -1,11 +1,11 @@
-package com.project.springboot.SimpleCourseRESTAPI;
+package com.project.springboot.Persistence;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SimpleCourseRESTAPIApplication {
+public class PersistenceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SimpleCourseRESTAPIApplication.class,args);
+        SpringApplication.run(PersistenceApplication.class,args);
     }
 }
