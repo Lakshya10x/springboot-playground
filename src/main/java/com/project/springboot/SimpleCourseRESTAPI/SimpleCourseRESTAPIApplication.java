@@ -1,11 +1,11 @@
-package com.project.springboot.CurrencyConfiguration
+package com.project.springboot.SimpleCourseRESTAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootPlaygroundApplication {
+public class SimpleCourseRESTAPIApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootPlaygroundApplication.class,args);
+        SpringApplication.run(SimpleCourseRESTAPIApplication.class,args);
     }
 }
