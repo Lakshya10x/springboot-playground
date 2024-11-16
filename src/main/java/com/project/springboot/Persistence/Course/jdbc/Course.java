@@ -2,7 +2,7 @@ package com.project.springboot.Persistence.Course.jdbc;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Course {
 
     private int id;
