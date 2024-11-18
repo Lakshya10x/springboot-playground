@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 /**
     @Entity : To create mapping between our Java bean and the table to insert, retrieve values & do operations on your table.
  */
-@Entity
+//@Entity
 public class Course {
 
     @Id
