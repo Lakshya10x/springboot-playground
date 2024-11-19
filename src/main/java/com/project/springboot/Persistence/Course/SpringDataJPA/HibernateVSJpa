@@ -1,0 +1,27 @@
+JPA :-
+Jpa defines the Specification
+It is an API
+JPA -> Interface
+
+- How do you define entities ?
+- How do you map attributes ?
+- Who manages the entities ?
+@Entity : import jakarta.persistence.Entity;
+
+---------------------------------------------
+Other JPA implementations - Hibernate, Toplinks, etc
+Hibernate :-
+One of the popular Implementation of JPA.
+Using 'Hibernate' directly would result in a lock into hibernate.
+
+How to make use of Hibernate directly ?
+- Making use of hibernate annotations
+
+@Entity : import org.hibernate.annotations;
+By adding hibernate jar to our classpath, we're making use of hibernate
+
+** NOTE :- Always Recommended - To Make use of JPA.
+
+Hierarchy :
+Hibernate dependency coming into spring-boot-starter-data-jpa
+JPA (jakarta.persistence-api) coming from hibernate-core:6.5.3.Final
